@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Email;
+import com.devcolibri.mvc.validator.Phone;
 
 @Entity
 public class Post {
@@ -11,8 +15,26 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String title, anons, full_text;
+    @Email
+    @NotBlank
+    private String mail;
+
+    @NotBlank
+    private String name, address;
+
     private  int views;
+
+    @Phone
+    private String phone;
+
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
     public Long getId() {
         return id;
@@ -22,28 +44,28 @@ public class Post {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getAnons() {
-        return anons;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAnons(String anons) {
-        this.anons = anons;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getFull_text() {
-        return full_text;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setFull_text(String full_text) {
-        this.full_text = full_text;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public int getViews() {
@@ -57,9 +79,10 @@ public class Post {
     public Post() {
     }
 
-    public Post(String title, String anons, String full_text) {
-        this.title = title;
-        this.anons = anons;
-        this.full_text = full_text;
+    public Post(String name, String address, String mail, String phone) {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.mail = mail;
     }
 }
