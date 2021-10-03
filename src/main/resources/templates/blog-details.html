@@ -10,9 +10,12 @@
 
 <div class="container mt-5">
     <div th:each="el : ${post}" class="alert alert-info mt-2">
-        <h1 th:text="${el.title}"/>
+        <h1 th:text="${el.name}"/>
+        <p th:text="${el.address}"/>
+        <p th:text="${el.mail}"/>
+        <p th:text="${el.phone}"/>
         <p th:text="${el.full_text}"/>
-        <p><b>Просмотры:<b> <span th:text="${el.views}"/></p>
+<!--        <p><b>Просмотры:<b> <span th:text="${el.views}"/></p>-->
         <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
         <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
             <button class="btn btn-warning mt-2" type="submit">Удалить</button>

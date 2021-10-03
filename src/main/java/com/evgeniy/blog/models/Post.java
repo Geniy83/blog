@@ -4,10 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Email;
 
-import org.hibernate.validator.constraints.Email;
-import com.devcolibri.mvc.validator.Phone;
 
 @Entity
 public class Post {
@@ -16,15 +17,14 @@ public class Post {
     private Long id;
 
     @Email
-    @NotBlank
     private String mail;
 
     @NotBlank
-    private String name, address;
+    private String name, address, full_text;
 
     private  int views;
 
-    @Phone
+    @NotBlank
     private String phone;
 
 
@@ -60,13 +60,13 @@ public class Post {
         this.address = address;
     }
 
-    public String getPhone() {
-        return phone;
-    }
+    public String getPhone() { return phone; }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    public void setPhone(String phone) { this.phone = phone; }
+
+    public String getFull_text() { return full_text; }
+
+    public void setFull_text(String full_text) { this.full_text = full_text; }
 
     public int getViews() {
         return views;
@@ -79,10 +79,11 @@ public class Post {
     public Post() {
     }
 
-    public Post(String name, String address, String mail, String phone) {
+    public Post(String name, String address, String mail, String phone, String full_text) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.mail = mail;
+        this.full_text = full_text;
     }
 }
