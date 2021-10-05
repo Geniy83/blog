@@ -22,7 +22,7 @@ public class Post {
     @NotBlank
     private String name, address, full_text;
 
-    private  int views;
+    private  String status;
 
     @NotBlank
     private String phone;
@@ -68,22 +68,19 @@ public class Post {
 
     public void setFull_text(String full_text) { this.full_text = full_text; }
 
-    public int getViews() {
-        return views;
-    }
+    public String getStatus() { return status; }
 
-    public void setViews(int views) {
-        this.views = views;
-    }
+    public void setStatus(String status) { this.status = status; }
 
     public Post() {
     }
 
-    public Post(String name, String address, String mail, String phone, String full_text) {
+    public Post(String name, String address, String mail, String phone, String full_text, String status) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.mail = mail;
         this.full_text = full_text;
+        this.status = status;
     }
 }

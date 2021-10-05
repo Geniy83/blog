@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Блог сайта</title>
+    <title>Детали заказа</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 </head>
@@ -15,7 +15,7 @@
         <p th:text="${el.mail}"/>
         <p th:text="${el.phone}"/>
         <p th:text="${el.full_text}"/>
-       <p><b>Просмотры:<b> <span th:text="${el.views}"/></p>
+        <p th:text="${el.status}"/>
         <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
         <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
             <button class="btn btn-warning mt-2" type="submit">Удалить</button>

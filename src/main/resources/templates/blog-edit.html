@@ -17,6 +17,7 @@
             <input type="text" th:value="${el.mail}" name="mail" placeholder="Введите Email заказчика" class="form-control"><br>
             <input type="text" th:value="${el.phone}" name="phone" placeholder="Введите телефон заказчика" class="form-control"><br>
             <textarea name="full_text" placeholder="Введите заказ" class="form-control" th:text="${el.full_text}" /><br>
+            <input type="text" th:value="${el.status}" name="phone" placeholder="Статус заказа (при выполнении заказа указать   +  )" class="form-control"><br>
             <button type="submit" class="btn btn-success">Обновить</button>
         </form>
     </div>
