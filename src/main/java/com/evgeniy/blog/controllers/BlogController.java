@@ -20,11 +20,9 @@ public class BlogController {
     private PostRepository postRepository;
 
     @GetMapping("/blog")
-    public String blogMain(@PathVariable("blog") String status, Model model) {
-        Optional<Post> post = postRepository.findByStatus(status);
-        ArrayList<Post> res = new ArrayList<>();
-        post.ifPresent(res :: add);
-        model.addAttribute("posts", res);
+    public String blogMain(Model model) {
+        Iterable<Post> posts = postRepository.findAll();
+        model.addAttribute("posts", posts);
         return "blog-main";
     }
 

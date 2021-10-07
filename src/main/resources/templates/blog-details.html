@@ -17,6 +17,7 @@
         <p th:text="${el.full_text}"/>
         <p th:text="${el.status}"/>
         <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a>
+        <a th:href="'/blog/' + ${el.id} + '/edit1'" class="btn btn-warning">Сменить статус заказа</a>
         <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
             <button class="btn btn-warning mt-2" type="submit">Удалить</button>
         </form>
