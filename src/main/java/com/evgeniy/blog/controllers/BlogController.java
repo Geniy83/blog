@@ -20,8 +20,8 @@ public class BlogController {
     private PostRepository postRepository;
 
     @GetMapping("/blog")
-    public String blogMain(Model model) {
-        Iterable<Post> posts = postRepository.findAll();
+        public String blogMain(Model model) {
+        Iterable<Post> posts = postRepository.findByStatusNull();
         model.addAttribute("posts", posts);
         return "blog-main";
     }
@@ -32,7 +32,8 @@ public class BlogController {
     }
 
     @PostMapping("/blog/add")
-    private String blogPostAdd(@RequestParam String name, @RequestParam String address, @RequestParam String mail, @RequestParam String phone, @RequestParam String full_text, @RequestParam String status, Model model) {
+    private String blogPostAdd(@RequestParam String name, @RequestParam String address, @RequestParam String mail, @RequestParam String phone, @RequestParam String full_text, Model model) {
+        String status = null;
         Post post = new Post(name, address, mail, phone, full_text, status);
         postRepository.save(post);
         return "redirect:/blog";
@@ -63,14 +64,13 @@ public class BlogController {
     }
 
     @PostMapping("/blog/{id}/edit")
-    private String blogPostUpdate(@PathVariable(value = "id") long id, @RequestParam String name, @RequestParam String address, @RequestParam String mail, @RequestParam String phone, @RequestParam String full_text, @RequestParam String status, Model model) {
+    private String blogPostUpdate(@PathVariable(value = "id") long id, @RequestParam String name, @RequestParam String address, @RequestParam String mail, @RequestParam String phone, @RequestParam String full_text, Model model) {
         Post post = postRepository.findById(id).orElseThrow();
         post.setName(name);
         post.setAddress(address);
         post.setMail(mail);
         post.setPhone(phone);
         post.setFull_text(full_text);
-        post.setStatus(status);
         postRepository.save(post);
         return "redirect:/blog";
     }
